@@ -5,16 +5,12 @@ def main():
     output_numbers = []
     for i in range(num_lines):
         line = sys.stdin.readline().rstrip()
-        value_1, value_2 = line.split()
-        value_1 = int(value_1)
-        value_2 = int(value_2)
-        result = value_1 + value_2
-        output_numbers.append(str(result))
+
     print('\n'.join(output_numbers))
 
-#use main to make variables local, more efficient
 if __name__ == '__main__':
     main()
+#use main to make variables local, more efficient
 
 # Весь код программы заключён в функцию main. Это нужно, чтобы код программы
 # работал не с глобальными, а с локальными переменными функции main. Обращение
@@ -80,3 +76,35 @@ def is_prime(n):
             return False
         i = i + 1
     return True
+
+def eratosthenes(n):
+    numbers = list(range(n + 1))
+    numbers[0] = numbers[1] = False
+    for num in range(2, n):
+        if numbers[num]:
+            for j in range(2 * num, n + 1, num):
+                numbers[j] = False
+    return numbers
+
+def eratosthenes_effective(n):
+    numbers = list(range(n + 1))
+    numbers[0] = numbers[1] = False
+    for num in range(2, n):
+        if numbers[num]:
+            for j in range(num * num, n + 1, num):
+                numbers[j] = False
+    return numbers
+
+def get_least_primes_linear(n):
+    lp = [0] * (n + 1)
+    primes = []
+    for i in range(2, n + 1):
+        if lp[i] == 0:
+            lp[i] = i
+            primes.append(i)
+        for p in primes:
+            x = p * i
+            if (p > lp[i]) or (x > n):
+                break
+            lp[x] = p
+    return primes, lp
