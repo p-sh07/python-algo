@@ -1,7 +1,7 @@
 import sys
 
 def even(num):
-    return True if int(num) % 2 == 0 else False
+    return int(num) % 2 == 0
 
 def main():
     line = sys.stdin.readline().rstrip()
