@@ -3,6 +3,7 @@ import sys
 def even(num):
     return int(num) % 2 == 0
 
+
 def main():
     line = sys.stdin.readline().rstrip()
     nums = line.split()

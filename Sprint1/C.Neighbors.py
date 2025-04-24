@@ -26,6 +26,7 @@ def get_neighbors(mat, row, col):
     neighbors.sort(key = int)
     return " ".join(neighbors)
 
+
 def main():
     rows = int(input())
     cols = int(input())
@@ -39,6 +40,7 @@ def main():
     col = int(input())
 
     print( get_neighbors(mat, row, col) )
+
 
 if __name__ == '__main__':
     main()
